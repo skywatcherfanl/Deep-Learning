@@ -10,6 +10,93 @@ Task02：文本预处理、语言模型、循环神经网络基础
 * 建立字典，将每个词映射到一个唯一的索引（index）
 * 将文本从词的序列转换为索引的序列，方便输入模型
 
+## 1.1 文本读取
+我们用一部英文小说，即H. G. Well的Time Machine，作为示例，展示文本预处理的具体过程。
+``` python
+import collections
+import re
+
+def read_time_machine():
+    with open('/home/kesci/input/timemachine7163/timemachine.txt', 'r') as f:
+        lines = [re.sub('[^a-z]+', ' ', line.strip().lower()) for line in f]
+    return lines
+
+
+lines = read_time_machine()
+print('# sentences %d' % len(lines))
+``` 
+输出：
+```
+# sentences 3221
+```
+## 1.2 分词
+我们对每个句子进行分词，也就是将一个句子划分成若干个词（token），转换为一个词的序列。
+``` python
+def tokenize(sentences, token='word'):
+    """Split sentences into word or char tokens"""
+    if token == 'word':
+        return [sentence.split(' ') for sentence in sentences]
+    elif token == 'char':
+        return [list(sentence) for sentence in sentences]
+    else:
+        print('ERROR: unkown token type '+token)
+
+tokens = tokenize(lines)
+tokens[0:2]
+``` 
+输出：
+```
+[['the', 'time', 'machine', 'by', 'h', 'g', 'wells', ''], ['']]
+```
+
+### 建立字典
+为了方便模型处理，我们需要将字符串转换为数字。因此我们需要先构建一个字典（vocabulary），将每个词映射到一个唯一的索引编号。
+``` python
+class Vocab(object):
+    def __init__(self, tokens, min_freq=0, use_special_tokens=False):
+        counter = count_corpus(tokens)  # : 
+        self.token_freqs = list(counter.items())
+        self.idx_to_token = []
+        if use_special_tokens:
+            # padding, begin of sentence, end of sentence, unknown
+            self.pad, self.bos, self.eos, self.unk = (0, 1, 2, 3)
+            self.idx_to_token += ['', '', '', '']
+        else:
+            self.unk = 0
+            self.idx_to_token += ['']
+        self.idx_to_token += [token for token, freq in self.token_freqs
+                        if freq >= min_freq and token not in self.idx_to_token]
+        self.token_to_idx = dict()
+        for idx, token in enumerate(self.idx_to_token):
+            self.token_to_idx[token] = idx
+
+    def __len__(self):
+        return len(self.idx_to_token)
+
+    def __getitem__(self, tokens):
+        if not isinstance(tokens, (list, tuple)):
+            return self.token_to_idx.get(tokens, self.unk)
+        return [self.__getitem__(token) for token in tokens]
+
+    def to_tokens(self, indices):
+        if not isinstance(indices, (list, tuple)):
+            return self.idx_to_token[indices]
+        return [self.idx_to_token[index] for index in indices]
+
+def count_corpus(sentences):
+    tokens = [tk for st in sentences for tk in st]
+    return collections.Counter(tokens)  # 返回一个字典，记录每个词的出现次数
+``` 
+我们看一个例子，这里我们尝试用Time Machine作为语料构建字典
+``` python
+vocab = Vocab(tokens)
+print(list(vocab.token_to_idx.items())[0:10])
+``` 
+输出：
+```
+[('', 0), ('the', 1), ('time', 2), ('machine', 3), ('by', 4), ('h', 5), ('g', 6), ('wells', 7), ('i', 8), ('traveller', 9)]
+```
+
 
 
 # 2 语言模型
