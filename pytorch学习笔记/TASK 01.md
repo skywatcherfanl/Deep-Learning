@@ -326,7 +326,7 @@ y.sum().backward()
 xyplot(x, x.grad, 'grad of relu')
 ```
 <div align=center>
-<img width="350" src="../img/chapter03/3.8_relu_grad.png"/>
+<img width="350" src="image/task01/3.8_relu_grad.png"/>
 </div>
 
 ### 3.2.2 sigmoid函数
@@ -374,7 +374,7 @@ y = x.tanh()
 xyplot(x, y, 'tanh')
 ```
 <div align=center>
-<img width="350" src="../img/chapter03/3.8_tanh.png"/>
+<img width="350" src="image/task01/3.8_tanh.png"/>
 </div>
 
 依据链式法则，tanh函数的导数
