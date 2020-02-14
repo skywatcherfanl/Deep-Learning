@@ -238,6 +238,9 @@ $$\ell(\boldsymbol{\Theta}) = \frac{1}{n} \sum_{i=1}^n H\left(\boldsymbol y^{(i)
 * softmax回归是一个单层神经网络，输出个数等于分类问题中的类别个数。
 * 交叉熵适合衡量两个概率分布的差异。
 
+-----------
+> [损失函数 - 交叉熵损失函数](https://zhuanlan.zhihu.com/p/35709485)
+> [原书此节传送门](https://zh.d2l.ai/chapter_deep-learning-basics/softmax-regression.html)
 ---------------------------------------------------------------------------------
 
 # 3 多层感知机
