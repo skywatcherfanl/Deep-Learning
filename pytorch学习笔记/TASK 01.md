@@ -251,11 +251,11 @@ $$\ell(\boldsymbol{\Theta}) = \frac{1}{n} \sum_{i=1}^n H\left(\boldsymbol y^{(i)
 多层感知机在单层神经网络的基础上引入了一到多个隐藏层（hidden layer）。隐藏层位于输入层和输出层之间。图3.3展示了一个多层感知机的神经网络图，它含有一个隐藏层，该层中有5个隐藏单元。
 
 <div align=center>
-<img width="350" src="../img/chapter03/3.8_mlp.svg"/>
+<img width="350" src="image/task01/3.8_mlp.svg"/>
 </div>
-<div align=center> 图3.3 带有隐藏层的多层感知机</div>
+<div align=center> 图3.1 带有隐藏层的多层感知机</div>
 
-在图3.3所示的多层感知机中，输入和输出个数分别为4和3，中间的隐藏层中包含了5个隐藏单元（hidden unit）。由于输入层不涉及计算，图3.3中的多层感知机的层数为2。由图3.3可见，隐藏层中的神经元和输入层中各个输入完全连接，输出层中的神经元和隐藏层中的各个神经元也完全连接。因此，多层感知机中的隐藏层和输出层都是全连接层。
+在图3.1所示的多层感知机中，输入和输出个数分别为4和3，中间的隐藏层中包含了5个隐藏单元（hidden unit）。由于输入层不涉及计算，图3.1中的多层感知机的层数为2。由图3.1可见，隐藏层中的神经元和输入层中各个输入完全连接，输出层中的神经元和隐藏层中的各个神经元也完全连接。因此，多层感知机中的隐藏层和输出层都是全连接层。
 
 
 具体来说，给定一个小批量样本$\boldsymbol{X} \in \mathbb{R}^{n \times d}$，其批量大小为$n$，输入个数为$d$。假设多层感知机只有一个隐藏层，其中隐藏单元个数为$h$。记隐藏层的输出（也称为隐藏层变量或隐藏变量）为$\boldsymbol{H}$，有$\boldsymbol{H} \in \mathbb{R}^{n \times h}$。因为隐藏层和输出层均是全连接层，可以设隐藏层的权重参数和偏差参数分别为$\boldsymbol{W}_h \in \mathbb{R}^{d \times h}$和 $\boldsymbol{b}_h \in \mathbb{R}^{1 \times h}$，输出层的权重和偏差参数分别为$\boldsymbol{W}_o \in \mathbb{R}^{h \times q}$和$\boldsymbol{b}_o \in \mathbb{R}^{1 \times q}$。
@@ -316,7 +316,7 @@ xyplot(x, y, 'relu')
 ```
 
 <div align=center>
-<img width="350" src="../img/chapter03/3.8_relu.png"/>
+<img width="350" src="image/task01/3.8_relu.png"/>
 </div>
 
 显然，当输入为负数时，ReLU函数的导数为0；当输入为正数时，ReLU函数的导数为1。尽管输入为0时ReLU函数不可导，但是我们可以取此处的导数为0。下面绘制ReLU函数的导数。
@@ -342,7 +342,7 @@ y = x.sigmoid()
 xyplot(x, y, 'sigmoid')
 ```
 <div align=center>
-<img width="350" src="../img/chapter03/3.8_sigmoid.png"/>
+<img width="350" src="image/task01/3.8_sigmoid.png"/>
 </div>
 
 依据链式法则，sigmoid函数的导数
@@ -358,7 +358,7 @@ y.sum().backward()
 xyplot(x, x.grad, 'grad of sigmoid')
 ```
 <div align=center>
-<img width="350" src="img/task01/3.8_sigmoid_grad.png"/>
+<img width="350" src="image/task01/3.8_sigmoid_grad.png"/>
 </div>
 
 ### 3.2.3 tanh函数
@@ -389,7 +389,7 @@ y.sum().backward()
 xyplot(x, x.grad, 'grad of tanh')
 ```
 <div align=center>
-<img width="350" src="../img/chapter03/3.8_tanh_grad.png"/>
+<img width="350" src="image/task01/3.8_tanh_grad.png"/>
 </div>
 
 ## 3.3 多层感知机
