@@ -103,12 +103,12 @@ $$\boldsymbol{O}_ t = \boldsymbol{H}_ t \boldsymbol{W}_ {hq} + \boldsymbol{b}_ q
 
 循环神经网络的参数包括隐藏层的权重$\boldsymbol{W}_ {xh} \in \mathbb{R}^{d \times h}$、$\boldsymbol{W}_ {hh} \in \mathbb{R}^{h \times h}$和偏差 $\boldsymbol{b}_ h \in \mathbb{R}^{1 \times h}$，以及输出层的权重$\boldsymbol{W}_ {hq} \in \mathbb{R}^{h \times q}$和偏差$\boldsymbol{b}_ q \in \mathbb{R}^{1 \times q}$。值得一提的是，即便在不同时间步，循环神经网络也始终使用这些模型参数。因此，循环神经网络模型参数的数量不随时间步的增加而增长。
 
-图6.1展示了循环神经网络在3个相邻时间步的计算逻辑。在时间步$t$，隐藏状态的计算可以看成是将输入$\boldsymbol{X}_ t$和前一时间步隐藏状态$\boldsymbol{H}_ {t-1}$连结后输入一个激活函数为$\phi$的全连接层。该全连接层的输出就是当前时间步的隐藏状态$\boldsymbol{H}_ t$，且模型参数为$\boldsymbol{W}_ {xh}$与$\boldsymbol{W}_{hh}$的连结，偏差为$\boldsymbol{b}_ h$。当前时间步$t$的隐藏状态$\boldsymbol{H}_ t$将参与下一个时间步$t+1$的隐藏状态$\boldsymbol{H}_ {t+1}$的计算，并输入到当前时间步的全连接输出层。
+图3.1展示了循环神经网络在3个相邻时间步的计算逻辑。在时间步$t$，隐藏状态的计算可以看成是将输入$\boldsymbol{X}_ t$和前一时间步隐藏状态$\boldsymbol{H}_ {t-1}$连结后输入一个激活函数为$\phi$的全连接层。该全连接层的输出就是当前时间步的隐藏状态$\boldsymbol{H}_ t$，且模型参数为$\boldsymbol{W}_ {xh}$与$\boldsymbol{W}_ {hh}$的连结，偏差为$\boldsymbol{b}_ h$。当前时间步$t$的隐藏状态$\boldsymbol{H}_ t$将参与下一个时间步$t+1$的隐藏状态$\boldsymbol{H}_ {t+1}$的计算，并输入到当前时间步的全连接输出层。
 
 <div align=center>
 <img width="500" src="../img/chapter06/6.2_rnn.svg"/>
 </div>
-<div align=center>图6.1 含隐藏状态的循环神经网络</div>
+<div align=center>图3.1 含隐藏状态的循环神经网络</div>
 
 我们刚刚提到，隐藏状态中$\boldsymbol{X}_ t \boldsymbol{W}_ {xh} + \boldsymbol{H}_ {t-1} \boldsymbol{W}_ {hh}$的计算等价于$\boldsymbol{X}_ t$与$\boldsymbol{H}_ {t-1}$连结后的矩阵乘以$\boldsymbol{W}_ {xh}$与$\boldsymbol{W}_ {hh}$连结后的矩阵。接下来，我们用一个具体的例子来验证这一点。首先，我们构造矩阵`X`、`W_xh`、`H`和`W_hh`，它们的形状分别为(3, 1)、(1, 4)、(3, 4)和(4, 4)。将`X`与`W_xh`、`H`与`W_hh`分别相乘，再把两个乘法运算的结果相加，得到形状为(3, 4)的矩阵。
 
