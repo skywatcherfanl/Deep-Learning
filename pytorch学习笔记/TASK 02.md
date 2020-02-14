@@ -96,8 +96,52 @@ print(list(vocab.token_to_idx.items())[0:10])
 ```
 [('', 0), ('the', 1), ('time', 2), ('machine', 3), ('by', 4), ('h', 5), ('g', 6), ('wells', 7), ('i', 8), ('traveller', 9)]
 ```
-
-
+### 将词转为索引
+使用字典，我们可以将原文本中的句子从单词序列转换为索引序列
+``` python
+for i in range(8, 10):
+    print('words:', tokens[i])
+    print('indices:', vocab[tokens[i]])
+``` 
+输出：
+```
+words: ['the', 'time', 'traveller', 'for', 'so', 'it', 'will', 'be', 'convenient', 'to', 'speak', 'of', 'him', '']
+indices: [1, 2, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 0]
+words: ['was', 'expounding', 'a', 'recondite', 'matter', 'to', 'us', 'his', 'grey', 'eyes', 'shone', 'and']
+indices: [20, 21, 22, 23, 24, 16, 25, 26, 27, 28, 29, 30]
+```
+## 1.3 用现有工具进行分词
+我们前面介绍的分词方式非常简单，它至少有以下几个缺点:
+标点符号通常可以提供语义信息，但是我们的方法直接将其丢弃了
+类似“shouldn't", "doesn't"这样的词会被错误地处理
+类似"Mr.", "Dr."这样的词会被错误地处理
+我们可以通过引入更复杂的规则来解决这些问题，但是事实上，有一些现有的工具可以很好地进行分词，我们在这里简单介绍其中的两个：spaCy和NLTK。
+下面是一个简单的例子：
+``` python
+text = "Mr. Chen doesn't agree with my suggestion."
+```  
+#### spaCy:
+``` python
+import spacy
+nlp = spacy.load('en_core_web_sm')
+doc = nlp(text)
+print([token.text for token in doc])
+``` 
+输出：
+```
+['Mr.', 'Chen', 'does', "n't", 'agree', 'with', 'my', 'suggestion', '.']
+``` 
+#### NLTK:
+``` python
+from nltk.tokenize import word_tokenize
+from nltk import data
+data.path.append('/home/kesci/input/nltk_data3784/nltk_data')
+print(word_tokenize(text))
+``` 
+输出：
+```
+['Mr.', 'Chen', 'does', "n't", 'agree', 'with', 'my', 'suggestion', '.']
+``` 
 
 # 2 语言模型
 
