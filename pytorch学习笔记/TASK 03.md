@@ -145,6 +145,7 @@ $$
 
 ## 3.2 LSTM
 
+> [LSTM](https://zhuanlan.zhihu.com/p/32085405)
 ## 3.3 深层RNN
 
 ## 3.4 双向RNN
