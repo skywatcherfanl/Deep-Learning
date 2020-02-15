@@ -295,7 +295,7 @@ tensor([[ 5.2633, -3.2288,  0.6037, -1.3321],
 * 可以基于字符级循环神经网络来创建语言模型。
 
 -----------
-> [循环神经网络 – Recurrent Neural Network | RNN](https://easyai.tech/ai-definition/rnn/?nsukey=9a%2BqgOJE%2FaufxXuG5tuWQRw56FSQIOhFXVjQw8d%2Bjzi8My3nmojdVziKOTBZmPgWYoQOVCp9X5IK7jOkEC8AHLkvNyRMYYSyt9xsGcUZSChMmf9DV9Y31527X%2B4F3CLEcwwERXSdsYzyqZTQ9pQjH9tyjQ3MBnGfJCep6QcnE2%2BfoIg90dOGc0dQ383Kq9cZeD8o2%2FNnxNpTMYZDqZ1hUQ%3D%3D)
+> [循环神经网络 – Recurrent Neural Network | RNN](https://easyai.tech/ai-definition/rnn/?nsukey=9a%2BqgOJE%2FaufxXuG5tuWQRw56FSQIOhFXVjQw8d%2Bjzi8My3nmojdVziKOTBZmPgWYoQOVCp9X5IK7jOkEC8AHLkvNyRMYYSyt9xsGcUZSChMmf9DV9Y31527X%2B4F3CLEcwwERXSdsYzyqZTQ9pQjH9tyjQ3MBnGfJCep6QcnE2%2BfoIg90dOGc0dQ383Kq9cZeD8o2%2FNnxNpTMYZDqZ1hUQ%3D%3D)    
 > [原书传送门](https://zh.d2l.ai/chapter_recurrent-neural-networks/rnn.html)
 
 
