@@ -367,7 +367,7 @@ $$\boldsymbol{O}_ t = \boldsymbol{H}_ t^{(L)} \boldsymbol{W}_ {hq} + \boldsymbol
 
 $$
 \begin{aligned}
-\overrightarrow{\boldsymbol{H}}_ t &= \phi(\boldsymbol{X}_ t \boldsymbol{W}_ {xh}^{(f)} + \overrightarrow{\boldsymbol{H}}_ {t-1} \boldsymbol{W}_ {hh}^{(f)}  + \boldsymbol{b}_ h^{(f)}),\\
+\overrightarrow{\boldsymbol{H}}_ t &= \phi(\boldsymbol{X}_ t \boldsymbol{W}_ {xh}^{(f)} + \overrightarrow{\boldsymbol{H}}_ {t-1} \boldsymbol{W}_ {hh}^{(f)}  + \boldsymbol{b}_ h^{(f)}),\newline
 \overleftarrow{\boldsymbol{H}}_ t &= \phi(\boldsymbol{X}_ t \boldsymbol{W}_ {xh}^{(b)} + \overleftarrow{\boldsymbol{H}}_ {t+1} \boldsymbol{W}_ {hh}^{(b)}  + \boldsymbol{b}_ h^{(b)}),\\
 \end{aligned}
 $$
