@@ -165,7 +165,12 @@ $$
 
 $$
 \begin{aligned}
-\boldsymbol{R}_ t = \sigma(\boldsymbol{X}_ t \boldsymbol{W}_ {xr} + \boldsymbol{H}_ {t-1} \boldsymbol{W}_ {hr} + \boldsymbol{b}_ r),\\
+\boldsymbol{R}_ t = \sigma(\boldsymbol{X}_ t \boldsymbol{W}_ {xr} + \boldsymbol{H}_ {t-1} \boldsymbol{W}_ {hr} + \boldsymbol{b}_ r), 
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
 \boldsymbol{Z}_ t = \sigma(\boldsymbol{X}_ t \boldsymbol{W}_ {xz} + \boldsymbol{H}_ {t-1} \boldsymbol{W}_ {hz} + \boldsymbol{b}_ z),
 \end{aligned}
 $$
@@ -233,8 +238,18 @@ LSTM 中引入了3个门，即输入门（input gate）、遗忘门（forget gat
 
 $$
 \begin{aligned}
-\boldsymbol{I}_ t &= \sigma(\boldsymbol{X}_ t \boldsymbol{W}_ {xi} + \boldsymbol{H}_ {t-1} \boldsymbol{W}_ {hi} + \boldsymbol{b}_ i),\\
-\boldsymbol{F}_ t &= \sigma(\boldsymbol{X}_ t \boldsymbol{W}_ {xf} + \boldsymbol{H}_ {t-1} \boldsymbol{W}_ {hf} + \boldsymbol{b}_ f),\\
+\boldsymbol{I}_ t &= \sigma(\boldsymbol{X}_ t \boldsymbol{W}_ {xi} + \boldsymbol{H}_ {t-1} \boldsymbol{W}_ {hi} + \boldsymbol{b}_ i),
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\boldsymbol{F}_ t &= \sigma(\boldsymbol{X}_ t \boldsymbol{W}_ {xf} + \boldsymbol{H}_ {t-1} \boldsymbol{W}_ {hf} + \boldsymbol{b}_ f),
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
 \boldsymbol{O}_ t &= \sigma(\boldsymbol{X}_ t \boldsymbol{W}_ {xo} + \boldsymbol{H}_ {t-1} \boldsymbol{W}_ {ho} + \boldsymbol{b}_ o),
 \end{aligned}
 $$
