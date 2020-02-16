@@ -172,8 +172,8 @@ $$
 
 其中$\boldsymbol{W}_ {xr}, \boldsymbol{W}_ {xz} \in \mathbb{R}^{d \times h}$和$\boldsymbol{W}_ {hr}, \boldsymbol{W}_ {hz} \in \mathbb{R}^{h \times h}$是权重参数，$\boldsymbol{b}_ r, \boldsymbol{b}_ z \in \mathbb{R}^{1 \times h}$是偏差参数。sigmoid函数可以将元素的值变换到0和1之间。因此，重置门$\boldsymbol{R}_ t$和更新门$\boldsymbol{Z}_ t$中每个元素的值域都是$[0, 1]$。
 
-* 重置⻔有助于捕捉时间序列⾥短期的依赖关系
-* 更新⻔有助于捕捉时间序列⾥⻓期的依赖关系
+* 重置门有助于捕捉时间序列里短期的依赖关系
+* 更新门有助于捕捉时间序列里长期的依赖关系
 
 ### 3.1.2 候选隐藏状态
 
@@ -214,18 +214,90 @@ $$\boldsymbol{H}_ t = \boldsymbol{Z}_ t \odot \boldsymbol{H}_ {t-1}  + (1 - \bol
 -----------
 > [原书传送门](https://zh.d2l.ai/chapter_recurrent-neural-networks/gru.html)
 
-
-
-
-
-
 ## 3.2 长短期记忆LSTM（Long Short-term Memory）
+本节将介绍另一种常用的门控循环神经网络：长短期记忆LSTM。它比门控循环单元的结构稍微复杂一点。
+
+LSTM 中引入了3个门，即输入门（input gate）、遗忘门（forget gate）和输出门（output gate），以及与隐藏状态形状相同的记忆细胞（某些文献把记忆细胞当成一种特殊的隐藏状态），从而记录额外的信息。
+
+### 3.2.1 输入门、遗忘门和输出门
+
+与门控循环单元中的重置门和更新门一样，如图3.4所示，长短期记忆的门的输入均为当前时间步输入$\boldsymbol{X}_ t$与上一时间步隐藏状态$\boldsymbol{H}_ {t-1}$，输出由激活函数为sigmoid函数的全连接层计算得到。如此一来，这3个门元素的值域均为$[0,1]$。
+
+<div align=center>
+<img width="500" src="image/task03/6.8_lstm_0.svg"/>
+</div>
+<div align=center>图3.4 长短期记忆中输入门、遗忘门和输出门的计算</div>
+
+具体来说，假设隐藏单元个数为$h$，给定时间步$t$的小批量输入$\boldsymbol{X}_ t \in \mathbb{R}^{n \times d}$（样本数为$n$，输入个数为$d$）和上一时间步隐藏状态$\boldsymbol{H}_ {t-1} \in \mathbb{R}^{n \times h}$。
+时间步$t$的输入门$\boldsymbol{I}_ t \in \mathbb{R}^{n \times h}$、遗忘门$\boldsymbol{F}_ t \in \mathbb{R}^{n \times h}$和输出门$\boldsymbol{O}_ t \in \mathbb{R}^{n \times h}$分别计算如下：
+
+$$
+\begin{aligned}
+\boldsymbol{I}_ t &= \sigma(\boldsymbol{X}_ t \boldsymbol{W}_ {xi} + \boldsymbol{H}_ {t-1} \boldsymbol{W}_ {hi} + \boldsymbol{b}_ i),\\
+\boldsymbol{F}_ t &= \sigma(\boldsymbol{X}_ t \boldsymbol{W}_ {xf} + \boldsymbol{H}_ {t-1} \boldsymbol{W}_ {hf} + \boldsymbol{b}_ f),\\
+\boldsymbol{O}_ t &= \sigma(\boldsymbol{X}_ t \boldsymbol{W}_ {xo} + \boldsymbol{H}_ {t-1} \boldsymbol{W}_ {ho} + \boldsymbol{b}_ o),
+\end{aligned}
+$$
+
+其中的$\boldsymbol{W}_ {xi}, \boldsymbol{W}_ {xf}, \boldsymbol{W}_ {xo} \in \mathbb{R}^{d \times h}$和$\boldsymbol{W}_ {hi}, \boldsymbol{W}_ {hf}, \boldsymbol{W}_ {ho} \in \mathbb{R}^{h \times h}$是权重参数，$\boldsymbol{b}_ i, \boldsymbol{b}_ f, \boldsymbol{b}_ o \in \mathbb{R}^{1 \times h}$是偏差参数。
+
+### 3.2.2 候选记忆细胞
+
+接下来，长短期记忆需要计算候选记忆细胞$\tilde{\boldsymbol{C}}_ t$。它的计算与上面介绍的3个门类似，但使用了值域在$[-1, 1]$的tanh函数作为激活函数，如图3.5所示。
+
+<div align=center>
+<img width="500" src="image/task03/6.8_lstm_1.svg"/>
+</div>
+<div align=center>图3.5 长短期记忆中候选记忆细胞的计算</div>
 
 
+具体来说，时间步$t$的候选记忆细胞$\tilde{\boldsymbol{C}}_ t \in \mathbb{R}^{n \times h}$的计算为
+
+$$
+\tilde{\boldsymbol{C}}_ t = \text{tanh}(\boldsymbol{X}_ t \boldsymbol{W}_ {xc} + \boldsymbol{H}_ {t-1} \boldsymbol{W}_ {hc} + \boldsymbol{b}_ c),
+$$
+
+其中$\boldsymbol{W}_ {xc} \in \mathbb{R}^{d \times h}$和$\boldsymbol{W}_ {hc} \in \mathbb{R}^{h \times h}$是权重参数，$\boldsymbol{b}_ c \in \mathbb{R}^{1 \times h}$是偏差参数。
 
 
+### 3.2.3 记忆细胞
 
+我们可以通过元素值域在$[0, 1]$的输入门、遗忘门和输出门来控制隐藏状态中信息的流动，这一般也是通过使用按元素乘法（符号为$\odot$）来实现的。当前时间步记忆细胞$\boldsymbol{C}_ t \in \mathbb{R}^{n \times h}$的计算组合了上一时间步记忆细胞和当前时间步候选记忆细胞的信息，并通过遗忘门和输入门来控制信息的流动：
+
+$$\boldsymbol{C}_ t = \boldsymbol{F}_ t \odot \boldsymbol{C}_ {t-1} + \boldsymbol{I}_ t \odot \tilde{\boldsymbol{C}}_ t.$$
+
+
+如图3.6所示，遗忘门控制上一时间步的记忆细胞$\boldsymbol{C}_ {t-1}$中的信息是否传递到当前时间步，而输入门则控制当前时间步的输入$\boldsymbol{X}_ t$通过候选记忆细胞$\tilde{\boldsymbol{C}}_ t$如何流入当前时间步的记忆细胞。如果遗忘门一直近似1且输入门一直近似0，过去的记忆细胞将一直通过时间保存并传递至当前时间步。这个设计可以应对循环神经网络中的梯度衰减问题，并更好地捕捉时间序列中时间步距离较大的依赖关系。
+
+<div align=center>
+<img width="500" src="image/task03/6.8_lstm_2.svg"/>
+</div>
+<div align=center>图3.6 长短期记忆中记忆细胞的计算</div>
+
+
+### 3.2.4 隐藏状态
+
+有了记忆细胞以后，接下来我们还可以通过输出门来控制从记忆细胞到隐藏状态$\boldsymbol{H}_ t \in \mathbb{R}^{n \times h}$的信息的流动：
+
+$$\boldsymbol{H}_ t = \boldsymbol{O}_ t \odot \text{tanh}(\boldsymbol{C}_ t).$$
+
+这里的tanh函数确保隐藏状态元素值在-1到1之间。需要注意的是，当输出门近似1时，记忆细胞信息将传递到隐藏状态供输出层使用；当输出门近似0时，记忆细胞信息只自己保留。图3.7展示了长短期记忆中隐藏状态的计算。
+
+<div align=center>
+<img width="500" src="image/task03/6.8_lstm_3.svg"/>
+</div>
+<div align=center>图3.7 长短期记忆中隐藏状态的计算</div>
+
+## 小结
+
+* 长短期记忆的隐藏层输出包括隐藏状态和记忆细胞。只有隐藏状态会传递到输出层。
+* 长短期记忆的输入门、遗忘门和输出门可以控制信息的流动。
+* 长短期记忆可以应对循环神经网络中的梯度衰减问题，并更好地捕捉时间序列中时间步距离较大的依赖关系。
+
+-----------
 > [LSTM](https://zhuanlan.zhihu.com/p/32085405)
+> [原书传送门](https://zh.d2l.ai/chapter_recurrent-neural-networks/lstm.html)
+
 ## 3.3 深度循环神经网络DRNN（Deep Recurrent Neural Network）
 
 ## 3.4 双向循环神经⽹络BRNN（Bidirectional Recurrent Neural Network）
