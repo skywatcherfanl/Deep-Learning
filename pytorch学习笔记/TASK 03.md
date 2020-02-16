@@ -141,20 +141,20 @@ $$
 
 
 # 3 循环神经网络进阶
-## 3.1 ⻔控循环神经⽹络GRU（Gated Recurrent Neural Network）
+## 3.1 门控循环神经⽹络GRU（Gated Recurrent Neural Network）
 
 
 
 
 
-## 3.2 ⻓短期记忆LSTM（Long Short-term Memory）
+## 3.2 长短期记忆LSTM（Long Short-term Memory）
 
 
 
 
 
 > [LSTM](https://zhuanlan.zhihu.com/p/32085405)
-## 3.3 深度循环神经⽹络DRNN（Deep Recurrent Neural Network）
+## 3.3 深度循环神经网络DRNN（Deep Recurrent Neural Network）
 
 ## 3.4 双向循环神经⽹络BRNN（Bidirectional Recurrent Neural Network）
 
