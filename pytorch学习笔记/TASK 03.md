@@ -142,6 +142,9 @@ $$
 
 # 3 循环神经网络进阶
 ## 3.1 门控循环神经⽹络GRU（Gated Recurrent Neural Network）
+* RNN存在的问题：梯度较容易出现衰减或爆炸（BPTT）
+* ⻔控循环神经⽹络：捕捉时间序列中时间步距离较⼤的依赖关系
+
 当时间步数较大或者时间步较小时，循环神经网络的梯度较容易出现衰减或爆炸。虽然裁剪梯度可以应对梯度爆炸，但无法解决梯度衰减的问题。通常由于这个原因，循环神经网络在实际中较难捕捉时间序列中时间步距离较大的依赖关系。
 
 门控循环神经网络（gated recurrent neural network）的提出，正是为了更好地捕捉时间序列中时间步距离较大的依赖关系。它通过可以学习的门来控制信息的流动。其中，门控循环单元（gated recurrent unit，GRU）是一种常用的门控循环神经网络。
@@ -168,6 +171,9 @@ $$
 $$
 
 其中$\boldsymbol{W}_ {xr}, \boldsymbol{W}_ {xz} \in \mathbb{R}^{d \times h}$和$\boldsymbol{W}_ {hr}, \boldsymbol{W}_ {hz} \in \mathbb{R}^{h \times h}$是权重参数，$\boldsymbol{b}_ r, \boldsymbol{b}_ z \in \mathbb{R}^{1 \times h}$是偏差参数。sigmoid函数可以将元素的值变换到0和1之间。因此，重置门$\boldsymbol{R}_ t$和更新门$\boldsymbol{Z}_ t$中每个元素的值域都是$[0, 1]$。
+
+* 重置⻔有助于捕捉时间序列⾥短期的依赖关系；
+* 更新⻔有助于捕捉时间序列⾥⻓期的依赖关系。
 
 ### 3.1.2 候选隐藏状态
 
