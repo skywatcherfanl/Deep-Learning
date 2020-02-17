@@ -285,6 +285,10 @@ $$
 
 在我们讨论多头注意力层之前，先来迅速理解以下自注意力（self-attention）的结构。自注意力模型是一个正规的注意力模型，序列的每一个元素对应的key，value，query是完全一致的。如图3.2 自注意力输出了一个与输入长度相同的表征序列，与循环神经网络相比，自注意力对每个元素输出的计算是并行的，所以我们可以高效的实现这个模块。
 
+<div align=center>
+	<img src="https://cdn.kesci.com/upload/image/q5kpckv38q.png?imageView2/0/" width="320">
+</div>
+
 <div align=center>![Fig 3.2 自注意力结构](https://cdn.kesci.com/upload/image/q5kpckv38q.png?imageView2/0/w/320/h/320)
 
 $$
