@@ -222,7 +222,7 @@ $$
 这里函数$a$有多种选择，如果两个输入向量长度相同，一个简单的选择是计算它们的内积$a(\boldsymbol{s}, \boldsymbol{h})=\boldsymbol{s}^\top \boldsymbol{h}$。而最早提出注意力机制的论文则将输入连结后通过含单隐藏层的多层感知机变换：
 
 $$
-a(\boldsymbol{s}, \boldsymbol{h}) = \boldsymbol{v}^\top \tanh(\boldsymbol{W}_s \boldsymbol{s} + \boldsymbol{W}_ h \boldsymbol{h}),
+a(\boldsymbol{s}, \boldsymbol{h}) = \boldsymbol{v}^\top \tanh(\boldsymbol{W}_ s \boldsymbol{s} + \boldsymbol{W}_ h \boldsymbol{h}),
 $$
 
 其中$\boldsymbol{v}$、$\boldsymbol{W}_ s$、$\boldsymbol{W}_ h$都是可以学习的模型参数。
