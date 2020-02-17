@@ -275,7 +275,7 @@ $$
 2. Add and norm：多头注意力层和前馈网络的输出被送到两个“add and norm”层进行处理，该层包含残差结构以及层归一化。    
 3. Position encoding：由于自注意力层并没有区分元素的顺序，所以一个位置编码层被用于向序列元素里添加位置信息。    
 
-<div align=center>![Fig 3.1 The Transformer architecture.](https://cdn.kesci.com/upload/image/q5kpbj2cj5.png?imageView2/0/w/960/h/960)
+![Fig 3.1 The Transformer architecture.](https://cdn.kesci.com/upload/image/q5kpbj2cj5.png?imageView2/0/w/960/h/960)
 
 $$
 图 3.1\ Transformer 架构.
@@ -285,9 +285,7 @@ $$
 
 在我们讨论多头注意力层之前，先来迅速理解以下自注意力（self-attention）的结构。自注意力模型是一个正规的注意力模型，序列的每一个元素对应的key，value，query是完全一致的。如图3.2 自注意力输出了一个与输入长度相同的表征序列，与循环神经网络相比，自注意力对每个元素输出的计算是并行的，所以我们可以高效的实现这个模块。
 
-<div align=center>
-	<img src="https://cdn.kesci.com/upload/image/q5kpckv38q.png?imageView2/0/" width="320">
-</div>
+![Fig 3.2](https://cdn.kesci.com/upload/image/q5kpckv38q.png?imageView2/0/w/320/h/320)
 
 $$
 图3.2\ 自注意力结构
@@ -296,9 +294,8 @@ $$
 
 多头注意力层包含$h$个并行的自注意力层，每一个这种层被成为一个head。对每个头来说，在进行注意力计算之前，我们会将query、key和value用三个现行层进行映射，这$h$个注意力头的输出将会被拼接之后输入最后一个线性层进行整合。
 
-<div align=center>
-	<img src="https://cdn.kesci.com/upload/image/q5kpcsozid.png?imageView2/0/" width="640">
-</div>
+
+![Fig 3.3](https://cdn.kesci.com/upload/image/q5kpcsozid.png?imageView2/0/w/640/h/640)
 
 $$
 图3.3\ 多头注意力
@@ -353,9 +350,7 @@ $$
 for\ i=0,\ldots, l-1\ and\ j=0,\ldots,\lfloor (d-1)/2 \rfloor
 $$
 
-<div align=center>
-	<img src="https://cdn.kesci.com/upload/image/q5kpe0lu38.png?imageView2/0/" width="640">
-</div>
+![Fig 3.4](https://cdn.kesci.com/upload/image/q5kpe0lu38.png?imageView2/0/w/640/h/640)
 
 $$
 图3.4\ 位置编码
