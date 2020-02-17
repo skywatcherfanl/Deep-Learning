@@ -225,12 +225,12 @@ $$
 a(\boldsymbol{s}, \boldsymbol{h}) = \boldsymbol{v}^\top \tanh(\boldsymbol{W}_s \boldsymbol{s} + \boldsymbol{W}_ h \boldsymbol{h}),
 $$
 
-其中$\boldsymbol{v}$、$\boldsymbol{W}_s$、$\boldsymbol{W}_h$都是可以学习的模型参数。
+其中$\boldsymbol{v}$、$\boldsymbol{W}_ s$、$\boldsymbol{W}_ h$都是可以学习的模型参数。
 
 
 ## 2.2 更新隐藏状态
 
-现在我们描述第二个关键点，即更新隐藏状态。以门控循环单元为例，在解码器中我们可以对（门控循环单元（GRU））中门控循环单元的设计稍作修改，从而变换上一时间步$t'-1$的输出$\boldsymbol{y}_ {t'-1}$、隐藏状态$\boldsymbol{s}_ {t' - 1}$和当前时间步$t'$的含注意力机制的背景变量$\boldsymbol{c}_ {t'}$ [1]。解码器在时间步$t'$的隐藏状态为
+现在我们描述第二个关键点，即更新隐藏状态。以门控循环单元为例，在解码器中我们可以对（门控循环单元（GRU））中门控循环单元的设计稍作修改，从而变换上一时间步$t'-1$的输出$\boldsymbol{y}_ {t'-1}$、隐藏状态$\boldsymbol{s}_ {t' - 1}$和当前时间步$t'$的含注意力机制的背景变量$\boldsymbol{c}_ {t'}$。解码器在时间步$t'$的隐藏状态为
 
 $$\boldsymbol{s}_ {t'} = \boldsymbol{z}_ {t'} \odot \boldsymbol{s}_ {t'-1}  + (1 - \boldsymbol{z}_ {t'}) \odot \tilde{\boldsymbol{s}}_ {t'},$$
 
@@ -238,8 +238,8 @@ $$\boldsymbol{s}_ {t'} = \boldsymbol{z}_ {t'} \odot \boldsymbol{s}_ {t'-1}  + (1
 
 $$
 \begin{aligned}
-\boldsymbol{r}_ {t'} &= \sigma(\boldsymbol{W}_ {yr} \boldsymbol{y}_ {t'-1} + \boldsymbol{W}_ {sr} \boldsymbol{s}_ {t' - 1} + \boldsymbol{W}_  {cr} \boldsymbol{c}_ {t'} + \boldsymbol{b}_ r),\\
-\boldsymbol{z}_ {t'} &= \sigma(\boldsymbol{W}_ {yz} \boldsymbol{y}_ {t'-1} + \boldsymbol{W}_ {sz} \boldsymbol{s}_ {t' - 1} + \boldsymbol{W}_ {cz} \boldsymbol{c}_ {t'} + \boldsymbol{b}_ z),\\
+\boldsymbol{r}_ {t'} &= \sigma(\boldsymbol{W}_ {yr} \boldsymbol{y}_ {t'-1} + \boldsymbol{W}_ {sr} \boldsymbol{s}_ {t' - 1} + \boldsymbol{W}_  {cr} \boldsymbol{c}_ {t'} + \boldsymbol{b}_ r),\newline
+\boldsymbol{z}_ {t'} &= \sigma(\boldsymbol{W}_ {yz} \boldsymbol{y}_ {t'-1} + \boldsymbol{W}_ {sz} \boldsymbol{s}_ {t' - 1} + \boldsymbol{W}_ {cz} \boldsymbol{c}_ {t'} + \boldsymbol{b}_ z),\newline
 \tilde{\boldsymbol{s}}_ {t'} &= \text{tanh}(\boldsymbol{W}_ {ys} \boldsymbol{y}_ {t'-1} + \boldsymbol{W}_ {ss} (\boldsymbol{s}_ {t' - 1} \odot \boldsymbol{r}_ {t'}) + \boldsymbol{W}_ {cs} \boldsymbol{c}_ {t'} + \boldsymbol{b}_ s),
 \end{aligned}
 $$
