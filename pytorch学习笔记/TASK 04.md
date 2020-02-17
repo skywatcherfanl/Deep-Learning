@@ -5,12 +5,27 @@ Task04：机器翻译及相关技术；注意力机制与Seq2seq模型；Transfo
 机器翻译（MT）：将一段文本从一种语言自动翻译为另一种语言，用神经网络解决这个问题通常称为神经机器翻译（NMT）。 主要特征：输出是单词序列而不是单个单词。 输出序列的长度可能与源序列的长度不同。   
 
 ## 1.1 Encoder-Decoder
+
+Encoder-Decoder 是 NLP 领域里的一种模型框架。它被广泛用于机器翻译、语音识别等任务。我们将详细介绍 Encoder-Decoder、Seq2Seq 以及他们的升级方案Attention。    
+Encoder-Decoder 模型主要是 NLP 领域里的概念。它并不特值某种具体的算法，而是一类算法的统称。Encoder-Decoder 算是一个通用的框架，在这个框架下可以使用不同的算法来解决不同的任务。    
+Encoder-Decoder 这个框架很好的诠释了机器学习的核心思路：
+* 将现实问题转化为数学问题，通过求解数学问题，从而解决现实问题。  
+Encoder 又称作编码器。它的作用就是「将现实问题转化为数学问题」     
+Decoder 又称作解码器，他的作用是「求解数学问题，并转化为现实世界的解决方案」    
+
 * encoder：输入到隐藏状态   
 * decoder：隐藏状态到输出  
 
+<div align=center>
+<img width="500" src="../img/chapter10/1.PNG"/>
+</div>
+<div align=center>图1.1 Encoder-Decoder</div>
 
+-----------
+>[一文看懂 NLP 里的模型框架 Encoder-Decoder 和 Seq2Seq](https://segmentfault.com/a/1190000020843265)
 
 ## 1.2 Sequence to Sequence模型
+只要是符合上面的框架，都可以统称为 Encoder-Decoder 模型。说到 Encoder-Decoder 模型就经常提到一个名词—— Seq2Seq。Seq2Seq（是 Sequence-to-sequence 的缩写），就如字面意思，输入一个序列，输出另一个序列。这种结构最重要的地方在于输入序列和输出序列的长度是可变的。
 
 我们已经在前两节中表征并变换了不定长的输入序列。但在自然语言处理的很多应用中，输入和输出都可以是不定长序列。以机器翻译为例，输入可以是一段不定长的英语文本序列，输出可以是一段不定长的法语文本序列，例如
 
