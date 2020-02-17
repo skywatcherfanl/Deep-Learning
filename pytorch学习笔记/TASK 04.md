@@ -327,7 +327,7 @@ Transformer 模块另一个非常重要的部分就是基于位置的前馈网�
 
 除了上面两个模块之外，Transformer还有一个重要的相加归一化层，它可以平滑地整合输入和其他层的输出，因此我们在每个多头注意力层和FFN层后面都添加一个含残差连接的Layer Norm层。这里 Layer Norm 与Batch Norm很相似，唯一的区别在于Batch Norm是对于batch size这个维度进行计算均值和方差的，而Layer Norm则是对最后一维进行计算。层归一化可以防止层内的数值变化过大，从而有利于加快训练速度并且提高泛化性能。 
 
-[(ref)](https://zhuanlan.zhihu.com/p/54530247)
+[模型优化之Layer Normalization](https://zhuanlan.zhihu.com/p/54530247)
 
 ### 3.4位置编码
 
@@ -352,6 +352,10 @@ $$
 
 ![Fig 3.4](https://cdn.kesci.com/upload/image/q5kpe0lu38.png?imageView2/0/w/640/h/640)
 
+<div align=center>
+<img width="500" src="https://cdn.kesci.com/upload/image/q5kpe0lu38.png"/>
+</div>
+<div align=center>图1.5 束搜索的过程。束宽为2，输出序列最大长度为3。候选输出序列有A、C、AB、CE、ABD和CED</div>
 $$
 图3.4\ 位置编码
 $$
