@@ -289,8 +289,6 @@ $$
 	<img src="https://cdn.kesci.com/upload/image/q5kpckv38q.png?imageView2/0/" width="320">
 </div>
 
-<div align=center>![Fig 3.2 自注意力结构](https://cdn.kesci.com/upload/image/q5kpckv38q.png?imageView2/0/w/320/h/320)
-
 $$
 图3.2\ 自注意力结构
 $$
@@ -298,7 +296,9 @@ $$
 
 多头注意力层包含$h$个并行的自注意力层，每一个这种层被成为一个head。对每个头来说，在进行注意力计算之前，我们会将query、key和value用三个现行层进行映射，这$h$个注意力头的输出将会被拼接之后输入最后一个线性层进行整合。
 
-<div align=center>![Image Name](https://cdn.kesci.com/upload/image/q5kpcsozid.png?imageView2/0/w/640/h/640)
+<div align=center>
+	<img src="https://cdn.kesci.com/upload/image/q5kpcsozid.png?imageView2/0/" width="640">
+</div>
 
 $$
 图3.3\ 多头注意力
@@ -353,8 +353,9 @@ $$
 for\ i=0,\ldots, l-1\ and\ j=0,\ldots,\lfloor (d-1)/2 \rfloor
 $$
 
-
-<div align=center>![Image Name](https://cdn.kesci.com/upload/image/q5kpe0lu38.png?imageView2/0/w/640/h/640)
+<div align=center>
+	<img src="https://cdn.kesci.com/upload/image/q5kpe0lu38.png?imageView2/0/" width="640">
+</div>
 
 $$
 图3.4\ 位置编码
