@@ -195,7 +195,7 @@ $$\boldsymbol{s}_ {t'} = g(\boldsymbol{y}_ {t'-1}, \boldsymbol{c}_ {t'}, \boldsy
 我们先描述第一个关键点，即计算背景变量。图2.1描绘了注意力机制如何为解码器在时间步2计算背景变量。首先，函数$a$根据解码器在时间步1的隐藏状态和编码器在各个时间步的隐藏状态计算softmax运算的输入。softmax运算输出概率分布并对编码器各个时间步的隐藏状态做加权平均，从而得到背景变量。
 
 <div align=center>
-<img width="500" src="../img/chapter10/10.11_attention.svg"/>
+<img width="500" src="image/task04/10.11_attention.svg"/>
 </div>
 <div align=center>图2.1 编码器—解码器上的注意力机制</div>
 
@@ -203,7 +203,7 @@ $$\boldsymbol{s}_ {t'} = g(\boldsymbol{y}_ {t'-1}, \boldsymbol{c}_ {t'}, \boldsy
 具体来说，令编码器在时间步$t$的隐藏状态为$\boldsymbol{h}_t$，且总时间步数为$T$。那么解码器在时间步$t'$的背景变量为所有编码器隐藏状态的加权平均：
 
 $$
-\boldsymbol{c}_{t'} = \sum_{t=1}^T \alpha_{t' t} \boldsymbol{h}_t,
+\boldsymbol{c}_ {t'} = \sum_{t=1}^T \alpha_{t' t} \boldsymbol{h}_ t,
 $$
 
 其中给定$t'$时，权重$\alpha_{t' t}$在$t=1,\ldots,T$的值是一个概率分布。为了得到概率分布，我们可以使用softmax运算:
@@ -212,17 +212,17 @@ $$
 \alpha_{t' t} = \frac{\exp(e_{t' t})}{ \sum_{k=1}^T \exp(e_{t' k}) },\quad t=1,\ldots,T.
 $$
 
-现在，我们需要定义如何计算上式中softmax运算的输入$e_{t' t}$。由于$e_{t' t}$同时取决于解码器的时间步$t'$和编码器的时间步$t$，我们不妨以解码器在时间步$t'-1$的隐藏状态$\boldsymbol{s}_{t' - 1}$与编码器在时间步$t$的隐藏状态$\boldsymbol{h}_t$为输入，并通过函数$a$计算$e_{t' t}$：
+现在，我们需要定义如何计算上式中softmax运算的输入$e_{t' t}$。由于$e_{t' t}$同时取决于解码器的时间步$t'$和编码器的时间步$t$，我们不妨以解码器在时间步$t'-1$的隐藏状态$\boldsymbol{s}_ {t' - 1}$与编码器在时间步$t$的隐藏状态$\boldsymbol{h}_ t$为输入，并通过函数$a$计算$e_{t' t}$：
 
 $$
-e_{t' t} = a(\boldsymbol{s}_{t' - 1}, \boldsymbol{h}_t).
+e_{t' t} = a(\boldsymbol{s}_ {t' - 1}, \boldsymbol{h}_t).
 $$
 
 
-这里函数$a$有多种选择，如果两个输入向量长度相同，一个简单的选择是计算它们的内积$a(\boldsymbol{s}, \boldsymbol{h})=\boldsymbol{s}^\top \boldsymbol{h}$。而最早提出注意力机制的论文则将输入连结后通过含单隐藏层的多层感知机变换 [1]：
+这里函数$a$有多种选择，如果两个输入向量长度相同，一个简单的选择是计算它们的内积$a(\boldsymbol{s}, \boldsymbol{h})=\boldsymbol{s}^\top \boldsymbol{h}$。而最早提出注意力机制的论文则将输入连结后通过含单隐藏层的多层感知机变换：
 
 $$
-a(\boldsymbol{s}, \boldsymbol{h}) = \boldsymbol{v}^\top \tanh(\boldsymbol{W}_s \boldsymbol{s} + \boldsymbol{W}_h \boldsymbol{h}),
+a(\boldsymbol{s}, \boldsymbol{h}) = \boldsymbol{v}^\top \tanh(\boldsymbol{W}_s \boldsymbol{s} + \boldsymbol{W}_ h \boldsymbol{h}),
 $$
 
 其中$\boldsymbol{v}$、$\boldsymbol{W}_s$、$\boldsymbol{W}_h$都是可以学习的模型参数。
@@ -230,17 +230,17 @@ $$
 
 ## 2.2 更新隐藏状态
 
-现在我们描述第二个关键点，即更新隐藏状态。以门控循环单元为例，在解码器中我们可以对（门控循环单元（GRU））中门控循环单元的设计稍作修改，从而变换上一时间步$t'-1$的输出$\boldsymbol{y}_{t'-1}$、隐藏状态$\boldsymbol{s}_{t' - 1}$和当前时间步$t'$的含注意力机制的背景变量$\boldsymbol{c}_{t'}$ [1]。解码器在时间步$t'$的隐藏状态为
+现在我们描述第二个关键点，即更新隐藏状态。以门控循环单元为例，在解码器中我们可以对（门控循环单元（GRU））中门控循环单元的设计稍作修改，从而变换上一时间步$t'-1$的输出$\boldsymbol{y}_ {t'-1}$、隐藏状态$\boldsymbol{s}_ {t' - 1}$和当前时间步$t'$的含注意力机制的背景变量$\boldsymbol{c}_ {t'}$ [1]。解码器在时间步$t'$的隐藏状态为
 
-$$\boldsymbol{s}_{t'} = \boldsymbol{z}_{t'} \odot \boldsymbol{s}_{t'-1}  + (1 - \boldsymbol{z}_{t'}) \odot \tilde{\boldsymbol{s}}_{t'},$$
+$$\boldsymbol{s}_ {t'} = \boldsymbol{z}_ {t'} \odot \boldsymbol{s}_ {t'-1}  + (1 - \boldsymbol{z}_ {t'}) \odot \tilde{\boldsymbol{s}}_ {t'},$$
 
 其中的重置门、更新门和候选隐藏状态分别为
 
 $$
 \begin{aligned}
-\boldsymbol{r}_{t'} &= \sigma(\boldsymbol{W}_{yr} \boldsymbol{y}_{t'-1} + \boldsymbol{W}_{sr} \boldsymbol{s}_{t' - 1} + \boldsymbol{W}_{cr} \boldsymbol{c}_{t'} + \boldsymbol{b}_r),\\
-\boldsymbol{z}_{t'} &= \sigma(\boldsymbol{W}_{yz} \boldsymbol{y}_{t'-1} + \boldsymbol{W}_{sz} \boldsymbol{s}_{t' - 1} + \boldsymbol{W}_{cz} \boldsymbol{c}_{t'} + \boldsymbol{b}_z),\\
-\tilde{\boldsymbol{s}}_{t'} &= \text{tanh}(\boldsymbol{W}_{ys} \boldsymbol{y}_{t'-1} + \boldsymbol{W}_{ss} (\boldsymbol{s}_{t' - 1} \odot \boldsymbol{r}_{t'}) + \boldsymbol{W}_{cs} \boldsymbol{c}_{t'} + \boldsymbol{b}_s),
+\boldsymbol{r}_ {t'} &= \sigma(\boldsymbol{W}_ {yr} \boldsymbol{y}_ {t'-1} + \boldsymbol{W}_ {sr} \boldsymbol{s}_ {t' - 1} + \boldsymbol{W}_  {cr} \boldsymbol{c}_ {t'} + \boldsymbol{b}_ r),\\
+\boldsymbol{z}_ {t'} &= \sigma(\boldsymbol{W}_ {yz} \boldsymbol{y}_ {t'-1} + \boldsymbol{W}_ {sz} \boldsymbol{s}_ {t' - 1} + \boldsymbol{W}_ {cz} \boldsymbol{c}_ {t'} + \boldsymbol{b}_ z),\\
+\tilde{\boldsymbol{s}}_ {t'} &= \text{tanh}(\boldsymbol{W}_ {ys} \boldsymbol{y}_ {t'-1} + \boldsymbol{W}_ {ss} (\boldsymbol{s}_ {t' - 1} \odot \boldsymbol{r}_ {t'}) + \boldsymbol{W}_ {cs} \boldsymbol{c}_ {t'} + \boldsymbol{b}_ s),
 \end{aligned}
 $$
 
