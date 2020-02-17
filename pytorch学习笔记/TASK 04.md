@@ -284,22 +284,17 @@ $$
 ## 3.1 多头注意力层
 
 在我们讨论多头注意力层之前，先来迅速理解以下自注意力（self-attention）的结构。自注意力模型是一个正规的注意力模型，序列的每一个元素对应的key，value，query是完全一致的。如图3.2 自注意力输出了一个与输入长度相同的表征序列，与循环神经网络相比，自注意力对每个元素输出的计算是并行的，所以我们可以高效的实现这个模块。
-
-![Fig 3.2](https://cdn.kesci.com/upload/image/q5kpckv38q.png?imageView2/0/w/320/h/320)
-
-$$
-图3.2\ 自注意力结构
-$$
-
+<div align=center>
+<img width="400" src="https://cdn.kesci.com/upload/image/q5kpckv38q.png"/>
+</div>
+<div align=center>图3.2 自注意力结构</div>
 
 多头注意力层包含$h$个并行的自注意力层，每一个这种层被成为一个head。对每个头来说，在进行注意力计算之前，我们会将query、key和value用三个现行层进行映射，这$h$个注意力头的输出将会被拼接之后输入最后一个线性层进行整合。
 
-
-![Fig 3.3](https://cdn.kesci.com/upload/image/q5kpcsozid.png?imageView2/0/w/640/h/640)
-
-$$
-图3.3\ 多头注意力
-$$
+<div align=center>
+<img width="640" src="https://cdn.kesci.com/upload/image/q5kpcsozid.png"/>
+</div>
+<div align=center>图3.3 多头注意力</div>
 
 
 假设query，key和value的维度分别是$d_q$、$d_k$和$d_v$。那么对于每一个头$i=1,\ldots,h$，我们可以训练相应的模型权重$W_q^{(i)} \in \mathbb{R}^{p_q\times d_q}$、$W_k^{(i)} \in \mathbb{R}^{p_k\times d_k}$和$W_v^{(i)} \in \mathbb{R}^{p_v\times d_v}$，以得到每个头的输出：
@@ -350,14 +345,9 @@ $$
 for\ i=0,\ldots, l-1\ and\ j=0,\ldots,\lfloor (d-1)/2 \rfloor
 $$
 
-![Fig 3.4](https://cdn.kesci.com/upload/image/q5kpe0lu38.png?imageView2/0/w/640/h/640)
-
 <div align=center>
-<img width="500" src="https://cdn.kesci.com/upload/image/q5kpe0lu38.png"/>
+<img width="640" src="https://cdn.kesci.com/upload/image/q5kpe0lu38.png"/>
 </div>
-<div align=center>图1.5 束搜索的过程。束宽为2，输出序列最大长度为3。候选输出序列有A、C、AB、CE、ABD和CED</div>
-$$
-图3.4\ 位置编码
-$$
+<div align=center>图3.4 位置编码</div>
 
 
