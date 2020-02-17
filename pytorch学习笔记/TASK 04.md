@@ -262,8 +262,26 @@ $$
 -----------
 > 注[原书传送门](https://zh.d2l.ai/chapter_natural-language-processing/attention.html)
 
-
-
-
-
 # 3 Transformer
+对于主流的神经网络架构如卷积神经网络（CNNs）和循环神经网络（RNNs），有如下特征：
+
+- CNNs 易于并行化，却不适合捕捉变长序列内的依赖关系。
+- RNNs 适合捕捉长距离变长序列的依赖，但是却难以实现并行化处理序列。
+
+为了整合CNN和RNN的优势，[\[Vaswani et al., 2017\]](https://d2l.ai/chapter_references/zreferences.html#vaswani-shazeer-parmar-ea-2017) 创新性地使用注意力机制设计了Transformer模型。该模型利用attention机制实现了并行化捕捉序列依赖，并且同时处理序列的每个位置的tokens，上述优势使得Transformer模型在性能优异的同时大大减少了训练时间。
+
+图3.1展示了Transformer模型的架构，与seq2seq模型相似，Transformer同样基于编码器-解码器架构，其区别主要在于以下三点：    
+1. Transformer blocks：将seq2seq模型重的循环网络替换为了Transformer Blocks，该模块包含一个多头注意力层（Multi-head Attention Layers）以及两个position-wise feed-forward networks（FFN）。对于解码器来说，另一个多头注意力层被用于接受编码器的隐藏状态。    
+2. Add and norm：多头注意力层和前馈网络的输出被送到两个“add and norm”层进行处理，该层包含残差结构以及层归一化。    
+3. Position encoding：由于自注意力层并没有区分元素的顺序，所以一个位置编码层被用于向序列元素里添加位置信息。    
+
+![Fig. 10.3.1 The Transformer architecture.](https://cdn.kesci.com/upload/image/q5kpbj2cj5.png?imageView2/0/w/960/h/960)
+
+$$
+Fig 3.1\ Transformer 架构.
+$$
+
+
+在接下来的部分，我们将会带领大家实现Transformer里全新的子结构，并且构建一个神经机器翻译模型用以训练和测试。
+
+
