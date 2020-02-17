@@ -9,12 +9,12 @@ Task04：机器翻译及相关技术；注意力机制与Seq2seq模型；Transfo
 Encoder-Decoder 是 NLP 领域里的一种模型框架。它被广泛用于机器翻译、语音识别等任务。我们将详细介绍 Encoder-Decoder、Seq2Seq 以及他们的升级方案Attention。    
 Encoder-Decoder 模型主要是 NLP 领域里的概念。它并不特值某种具体的算法，而是一类算法的统称。Encoder-Decoder 算是一个通用的框架，在这个框架下可以使用不同的算法来解决不同的任务。    
 Encoder-Decoder 这个框架很好的诠释了机器学习的核心思路：
-* 将现实问题转化为数学问题，通过求解数学问题，从而解决现实问题。  
+> 将现实问题转化为数学问题，通过求解数学问题，从而解决现实问题。  
 Encoder 又称作编码器。它的作用就是「将现实问题转化为数学问题」     
 Decoder 又称作解码器，他的作用是「求解数学问题，并转化为现实世界的解决方案」    
 
-* encoder：输入到隐藏状态   
-* decoder：隐藏状态到输出  
+> encoder：输入到隐藏状态   
+> decoder：隐藏状态到输出  
 
 <div align=center>
 <img width="500" src="image/task04/1.PNG"/>
