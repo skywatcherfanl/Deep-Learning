@@ -19,10 +19,10 @@ Task05：卷积神经网络基础；leNet；卷积神经网络进阶
 在二维互相关运算中，卷积窗口从输入数组的最左上方开始，按从左往右、从上往下的顺序，依次在输入数组上滑动。当卷积窗口滑动到某一位置时，窗口中的输入子数组与核数组按元素相乘并求和，得到输出数组中相应位置的元素。图1.1中的输出数组高和宽分别为2，其中的4个元素由二维互相关运算得出：
 
 $$
-0\times0+1\times1+3\times2+4\times3=19,\\
-1\times0+2\times1+4\times2+5\times3=25,\\
-3\times0+4\times1+6\times2+7\times3=37,\\
-4\times0+5\times1+7\times2+8\times3=43.\\
+0\times0+1\times1+3\times2+4\times3=19,\newline
+1\times0+2\times1+4\times2+5\times3=25,\newline
+3\times0+4\times1+6\times2+7\times3=37,\newline
+4\times0+5\times1+7\times2+8\times3=43.\newline
 $$
 
 
