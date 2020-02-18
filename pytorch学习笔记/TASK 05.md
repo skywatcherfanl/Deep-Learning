@@ -24,7 +24,9 @@ $$
 $$
 1\times0+2\times1+4\times2+5\times3=25,
 $$
+$$
 3\times0+4\times1+6\times2+7\times3=37,
+$$
 $$
 4\times0+5\times1+7\times2+8\times3=43.
 $$
