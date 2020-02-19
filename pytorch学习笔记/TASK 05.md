@@ -198,7 +198,7 @@ $$
 -----------
 > [原书传送门](https://zh.d2l.ai/chapter_convolutional-neural-networks/pooling.html)
 
-# 2 卷积神经⽹络 leNet
+# 2 卷积神经网络 leNet
 
 在“多层感知机的从零开始实现”里我们构造了一个含单隐藏层的多层感知机模型来对Fashion-MNIST数据集中的图像进行分类。每张图像高和宽均是28像素。我们将图像中的像素逐行展开，得到长度为784的向量，并输入进全连接层中。然而，这种分类方法有一定的局限性。    
 
@@ -212,9 +212,7 @@ $$
 <div align=center>
 <img width="600" src="image/task05/5.5_lenet.png"/>
 </div>
-<div align=center>图1.7 LeNet网络结构</div>
-
-## 5.5.1 LeNet模型
+<div align=center>图2.1 LeNet网络结构</div>
 
 LeNet分为卷积层块和全连接层块两个部分。下面我们分别介绍这两个模块。
 
@@ -230,16 +228,5 @@ LeNet分为卷积层块和全连接层块两个部分。下面我们分别介绍
 * LeNet交替使用卷积层和最大池化层后接全连接层来进行图像分类。
 -----------
 > [原书传送门](https://zh.d2l.ai/chapter_convolutional-neural-networks/lenet.html)
-
-
-
-
-
-
-
-
-
-
-
 
 # 3 卷积神经网络进阶
