@@ -395,7 +395,7 @@ Inception块中可以自定义的超参数是每个层的输出通道数，我�
 ### 3.4.2 GoogLeNet模型
 
 <div align=center>
-<img width="500" src="image/task05/3.7.PNG"/>
+<img width="360" src="image/task05/3.7.PNG"/>
 </div>
 <div align=center>图3.7 GoogLeNet模型</div>
 
