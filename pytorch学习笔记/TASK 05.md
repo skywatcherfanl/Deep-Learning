@@ -226,6 +226,7 @@ LeNet分为卷积层块和全连接层块两个部分。下面我们分别介绍
 
 * 卷积神经网络就是含卷积层的网络。
 * LeNet交替使用卷积层和最大池化层后接全连接层来进行图像分类。
+* LeNet模型中，90%以上的参数集中在全连接层块。
 -----------
 > [原书传送门](https://zh.d2l.ai/chapter_convolutional-neural-networks/lenet.html)
 
