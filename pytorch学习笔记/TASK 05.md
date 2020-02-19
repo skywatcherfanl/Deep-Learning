@@ -325,4 +325,4 @@ Block:数个相同的填充为1、窗口形状为3×3的卷积层,接上一个�
 -----------
 > [原书传送门](https://zh.d2l.ai/chapter_convolutional-neural-networks/vgg.html)
 
-
+   
