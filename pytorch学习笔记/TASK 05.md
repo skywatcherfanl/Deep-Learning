@@ -292,7 +292,7 @@ AlexNet在LeNet的基础上增加了3个卷积层。但AlexNet作者对它们的
 本节介绍VGG，它的名字来源于论文作者所在的实验室Visual Geometry Group。VGG提出了可以通过重复使用简单的基础块来构建深度模型的思路。
 
 <div align=center>
-<img width="800" src="image/task05/3.3.png"/>
+<img width="600" src="image/task05/3.3.png"/>
 </div>
 <div align=center>图3.3 VGG的结构图</div>
 
