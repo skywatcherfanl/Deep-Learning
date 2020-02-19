@@ -222,7 +222,7 @@ LeNet分为卷积层块和全连接层块两个部分。下面我们分别介绍
 
 在卷积层块中输入的高和宽在逐层减小。卷积层由于使用高和宽均为5的卷积核，从而将高和宽分别减小4，而池化层则将高和宽减半，但通道数则从1增加到16。全连接层则逐层减少输出个数，直到变成图像的类别数10。
 <div align=center>
-<img width="600" src="image/task05/2.2.png"/>
+<img width="600" src="image/task05/2.2.PNG"/>
 </div>
 <div align=center>图2.2 LeNet模型图</div>
 
