@@ -314,7 +314,7 @@ VGG块的组成规律是：连续使用数个相同的填充为1、窗口形状�
 VGG：通过重复使⽤简单的基础块来构建深度模型。
 Block:数个相同的填充为1、窗口形状为3×3的卷积层,接上一个步幅为2、窗口形状为2×2的最大池化层。卷积层保持输入的高和宽不变，而池化层则对其减半。
 <div align=center>
-<img width="600" src="image/task05/3.4.png"/>
+<img width="600" src="image/task05/3.4.PNG"/>
 </div>
 <div align=center>图3.4 VGG的网络</div>
 
