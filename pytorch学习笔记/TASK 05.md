@@ -192,19 +192,20 @@ $$
 * 池化层的一个主要作用是缓解卷积层对位置的过度敏感性。
 * 可以指定池化层的填充和步幅。
 * 池化层的输出通道数跟输入通道数相同。
-
+* 池化层有参与模型的正向计算，同样也会参与反向传播。
+* 池化层直接对窗口内的元素求最大值或平均值，并没有模型参数参与计算。
 
 -----------
-> 注：除代码外本节与原书此节基本相同，[原书传送门](https://zh.d2l.ai/chapter_convolutional-neural-networks/pooling.html)
-
-
-
-
-
-
-
-
+> [原书传送门](https://zh.d2l.ai/chapter_convolutional-neural-networks/pooling.html)
 
 # 2 leNet
+
+
+
+
+
+
+
+
 
 # 3 卷积神经网络进阶
