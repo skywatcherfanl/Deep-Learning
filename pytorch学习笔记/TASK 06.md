@@ -19,7 +19,7 @@ Task06：批量归一化；残差网络；凸优化；梯度下降
 ## 1.1 对全连接层做批量归一化
 位置：全连接层中的仿射变换和激活函数之间。  
 **全连接：**  
-$$
+$$ 
 \boldsymbol{x} = \boldsymbol{W\boldsymbol{u} + \boldsymbol{b}} \\
  output =\phi(\boldsymbol{x})
  $$   
