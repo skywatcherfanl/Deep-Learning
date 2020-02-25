@@ -116,6 +116,9 @@ min_D max_G \{ -E_{x \sim \text{Data}} log D(\mathbf x) - E_{z \sim \text{Noise}
 $$
 
 # 3 DCGAN
+
+DCGAN,全称叫Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks,顾名思义.就是在生成器和判别器特征提取层用卷积神经网络代替了原始GAN中的多层感知机。
+
 > DCGAN的特点
 * 所有的pooling层使用步幅卷积(判别网络)和微步幅度卷积(生成网络)进行替换。     
 * 在生成网络和判别网络上使用批处理规范化。      
