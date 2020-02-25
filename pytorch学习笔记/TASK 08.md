@@ -67,7 +67,7 @@ def apply(img, aug, num_rows=2, num_cols=4, scale=1.5):
 apply(img, torchvision.transforms.RandomHorizontalFlip())
 ```
 <div align=center>
-<img width="500" src="../img/chapter09/9.1_output2.png"/>
+<img width="500" src="image/task08/9.1_output2.png"/>
 </div>
 
 上下翻转不如左右翻转通用。但是至少对于样例图像，上下翻转不会造成识别障碍。下面我们创建`RandomVerticalFlip`实例来实现一半概率的图像垂直（上下）翻转。
@@ -107,7 +107,7 @@ apply(img, torchvision.transforms.ColorJitter(brightness=0.5))
 apply(img, torchvision.transforms.ColorJitter(hue=0.5))
 ```
 <div align=center>
-<img width="500" src="../img/chapter09/9.1_output6.png"/>
+<img width="500" src="image/task08/9.1_output6.png"/>
 </div>
 
 类似地，我们也可以随机变化图像的对比度。
