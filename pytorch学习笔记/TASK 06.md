@@ -287,7 +287,7 @@ $$
 <div align=center>  </div>
 
 
-## 随机梯度下降参数更新
+### 4.2.1 随机梯度下降参数更新
 对于有 $n$ 个样本对训练数据集，设 $f_i(x)$ 是第 $i$ 个样本的损失函数, 则目标函数为:
 
 $$
@@ -311,6 +311,6 @@ $$
 且有：
 
 $$
-\mathbb{E}_{i} \nabla f_{i}(\mathbf{x})=\frac{1}{n} \sum_{i=1}^{n} \nabla f_{i}(\mathbf{x})=\nabla f(\mathbf{x})
+\mathbb{E}_ {i} \nabla f_ {i}(\mathbf{x})=\frac{1}{n} \sum_{i=1}^{n} \nabla f_{i}(\mathbf{x})=\nabla f(\mathbf{x})
 $$
 
