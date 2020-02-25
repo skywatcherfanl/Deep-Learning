@@ -157,7 +157,7 @@ $$
 <div align=center>
 <img width="400" src="image/task06/3.1.PNG"/>
 </div>
-<div align=center> 
+<div align=center>  </div>
 
 
 ### 3.1.2 鞍点
