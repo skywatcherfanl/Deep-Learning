@@ -60,7 +60,7 @@ def apply(img, aug, num_rows=2, num_cols=4, scale=1.5):
 </div>
 
 ### 1.2.1 翻转和裁剪
-
+ 
 左右翻转图像通常不改变物体的类别。它是最早也是最广泛使用的一种图像增广方法。下面我们通过`torchvision.transforms`模块创建`RandomHorizontalFlip`实例来实现一半概率的图像水平（左右）翻转。
 
 ``` python
