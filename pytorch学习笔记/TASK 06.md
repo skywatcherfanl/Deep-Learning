@@ -144,5 +144,70 @@ DenseNet的主要构建模块是稠密块（dense block）和过渡层（transit
 
 # 3 凸优化
 
+> 尽管优化方法可以最小化深度学习中的损失函数值，但本质上优化方法达到的目标与深度学习的目标并不相同。  
+- 优化方法目标：训练集损失函数值   
+- 深度学习目标：测试集损失函数值（泛化性）
+
+## 3.1 优化在深度学习中的挑战
+### 3.1.1 局部最小值
+
+$$
+f(x) = x\cos \pi x
+$$
+<div align=center>
+<img width="400" src="image/task06/3.1.PNG"/>
+</div>
+<div align=center> 
+
+
+### 3.1.2 鞍点
+### 鞍点的定义 
+一个不是局部最小值的驻点（一阶导数为0的点）称为鞍点。数学含义是： 目标函数在此点上的梯度（一阶导数）值为 0， 但从改点出发的一个方向是函数的极大值点，而在另一个方向是函数的极小值点。
+
+
+### 3.1.3 梯度消失
+
+## 3.2 凸性（Convexity）
+
+
+
+## 3.3 凸函数与二阶导数
+$f^{''}(x) \ge 0 \Longleftrightarrow f(x)$ 是凸函数
+
+**必要性 ($\Leftarrow$):**
+
+对于凸函数：
+
+$$
+\frac{1}{2} f(x+\epsilon)+\frac{1}{2} f(x-\epsilon) \geq f\left(\frac{x+\epsilon}{2}+\frac{x-\epsilon}{2}\right)=f(x)
+$$
+
+故:
+
+$$
+f^{\prime \prime}(x)=\lim _ {\varepsilon \rightarrow 0} \frac{\frac{f(x+\epsilon) - f(x)}{\epsilon}-\frac{f(x) - f(x-\epsilon)}{\epsilon}}{\epsilon}
+$$
+
+
+$$
+f^{\prime \prime}(x)=\lim _ {\varepsilon \rightarrow 0} \frac{f(x+\epsilon)+f(x-\epsilon)-2 f(x)}{\epsilon^{2}} \geq 0
+$$
+
+
+**充分性 ($\Rightarrow$):**
+
+令 $a < x < b$ 为 $f(x)$ 上的三个点，由拉格朗日中值定理:
+
+$$
+\begin{array}{l}{f(x)-f(a)=(x-a) f^{\prime}(\alpha) \text { for some } \alpha \in[a, x] \text { and }} \\ {f(b)-f(x)=(b-x) f^{\prime}(\beta) \text { for some } \beta \in[x, b]}\end{array}
+$$
+
+
+根据单调性，有 $f^{\prime}(\beta) \geq f^{\prime}(\alpha)$, 故:
+
+$$
+\begin{aligned} f(b)-f(a) &=f(b)-f(x)+f(x)-f(a) \\ &=(b-x) f^{\prime}(\beta)+(x-a) f^{\prime}(\alpha) \\ & \geq(b-a) f^{\prime}(\alpha) \end{aligned}
+$$
+
 
 # 4 梯度下降
