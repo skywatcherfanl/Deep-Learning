@@ -190,6 +190,7 @@ $$
 半负定矩阵：所有特征值为非正。  
 不定矩阵：特征值有正有负。   
 
+> [最优化--鞍点介绍](https://zhuanlan.zhihu.com/p/33340316)
 ### 3.1.3 梯度消失
 
 <div align=center>
@@ -204,7 +205,7 @@ $$
 </div>
 <div align=center>  </div>
 
-## 3.3 凸函数与二阶导数
+### 3.2.1 凸函数与二阶导数
 $f^{''}(x) \ge 0 \Longleftrightarrow f(x)$ 是凸函数
 
 **必要性 ($\Leftarrow$):**
