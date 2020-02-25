@@ -205,7 +205,7 @@ $$
 
 
 <div align=center>
-<img width="960" src="image/task09/2.1.PNG"/>
+<img width="600" src="image/task09/2.1.PNG"/>
 </div>
 
 
