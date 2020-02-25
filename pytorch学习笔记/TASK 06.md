@@ -272,7 +272,7 @@ f\left(x-\eta f^{\prime}(x)\right)=f(x)-\eta f^{\prime 2}(x)+\mathcal{O}\left(\e
 $$
 
 $$
-f\left(x-\eta f^{\prime}(x)\right) \ lesssim f(x)
+f\left(x-\eta f^{\prime}(x)\right) < f(x)
 $$
 
 
