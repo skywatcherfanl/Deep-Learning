@@ -60,6 +60,11 @@ $$
 
 比如网络中间某一层学习到特征数据本身就分布在S型激活函数的两侧，你强制把它给我归一化处理、标准差也限制在了1，把数据变换成分布于s函数的中间部分，这样就相当于我这一层网络所学习到的特征分布被你搞坏了，这可怎么办？于是通过变换重构，引入可学习参数：拉伸参数γ和偏移参数β，这就是算法关键之处。当$\boldsymbol{\gamma} = \sqrt{\boldsymbol{\sigma}_ \mathcal{B}^2 + \epsilon}$和$\boldsymbol{\beta} = \boldsymbol{\mu}_ \mathcal{B}$时，是可以恢复出原始的某一层所学到的特征的。因此我们引入了这个可学习重构参数γ、β，让我们的网络可以学习恢复出原始网络所要学习的特征分布。
 
+<div align=center>
+<img width="400" src="image/task06/归一化.png"/>
+</div>
+<div align=center>  </div>
+
 ## 1.2 对卷积层做批量归⼀化
 位置：卷积计算之后、应用激活函数之前。  
 如果卷积计算输出多个通道，我们需要对这些通道的输出分别做批量归一化，且每个通道都拥有独立的拉伸和偏移参数。
@@ -245,3 +250,67 @@ $$
 
 
 # 4 梯度下降
+## 4.1 一维梯度下降
+
+<div align=center>
+<img width="400" src="image/task06/4.1.PNG"/>
+</div>
+<div align=center>  </div>
+**证明：沿梯度反方向移动自变量可以减小函数值**
+
+泰勒展开：
+
+$$
+f(x+\epsilon)=f(x)+\epsilon f^{\prime}(x)+\mathcal{O}\left(\epsilon^{2}\right)
+$$
+
+代入沿梯度方向的移动量 $\eta f^{\prime}(x)$：
+
+$$
+f\left(x-\eta f^{\prime}(x)\right)=f(x)-\eta f^{\prime 2}(x)+\mathcal{O}\left(\eta^{2} f^{\prime 2}(x)\right)
+$$
+
+$$
+f\left(x-\eta f^{\prime}(x)\right) \lesssim f(x)
+$$
+
+
+$$
+x \leftarrow x-\eta f^{\prime}(x)
+$$
+
+## 4.2 多维梯度下降
+
+<div align=center>
+<img width="400" src="image/task06/4.2.PNG"/>
+</div>
+<div align=center>  </div>
+
+
+## 随机梯度下降参数更新
+对于有 $n$ 个样本对训练数据集，设 $f_i(x)$ 是第 $i$ 个样本的损失函数, 则目标函数为:
+
+$$
+f(\mathbf{x})=\frac{1}{n} \sum_{i=1}^{n} f_{i}(\mathbf{x})
+$$
+
+其梯度为:
+
+$$
+\nabla f(\mathbf{x})=\frac{1}{n} \sum_{i=1}^{n} \nabla f_{i}(\mathbf{x})
+$$
+
+使用该梯度的一次更新的时间复杂度为 $\mathcal{O}(n)$
+
+随机梯度下降更新公式 $\mathcal{O}(1)$:
+
+$$
+\mathbf{x} \leftarrow \mathbf{x}-\eta \nabla f_{i}(\mathbf{x})
+$$
+
+且有：
+
+$$
+\mathbb{E}_{i} \nabla f_{i}(\mathbf{x})=\frac{1}{n} \sum_{i=1}^{n} \nabla f_{i}(\mathbf{x})=\nabla f(\mathbf{x})
+$$
+
