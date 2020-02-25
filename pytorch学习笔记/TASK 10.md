@@ -116,6 +116,11 @@ min_D max_G \{ -E_{x \sim \text{Data}} log D(\mathbf x) - E_{z \sim \text{Noise}
 $$
 
 # 3 DCGAN
-
+> DCGAN的特点
+所有的pooling层使用步幅卷积(判别网络)和微步幅度卷积(生成网络)进行替换。
+在生成网络和判别网络上使用批处理规范化。
+对于更深的架构移除全连接隐藏层。
+在生成网络的所有层上使用RelU激活函数，除了输出层使用Tanh激活函数。
+在判别网络的所有层上使用LeakyReLU激活函数。
 
 
