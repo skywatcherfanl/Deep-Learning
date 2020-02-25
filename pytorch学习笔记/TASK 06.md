@@ -256,6 +256,7 @@ $$
 <img width="400" src="image/task06/4.1.PNG"/>
 </div>
 <div align=center>  </div>
+
 **证明：沿梯度反方向移动自变量可以减小函数值**
 
 泰勒展开：
@@ -271,7 +272,7 @@ f\left(x-\eta f^{\prime}(x)\right)=f(x)-\eta f^{\prime 2}(x)+\mathcal{O}\left(\e
 $$
 
 $$
-f\left(x-\eta f^{\prime}(x)\right) \lesssim f(x)
+f\left(x-\eta f^ {\prime}(x)\right) \lesssim f(x)
 $$
 
 
