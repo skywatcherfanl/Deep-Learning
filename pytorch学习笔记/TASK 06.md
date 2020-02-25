@@ -113,7 +113,7 @@ net = nn.Sequential(
 
 GoogLeNet在后面接了4个由Inception块组成的模块。ResNet则使用4个由残差块组成的模块，每个模块使用若干个同样输出通道数的残差块。第一个模块的通道数同输入通道数一致。由于之前已经使用了步幅为2的最大池化层，所以无须减小高和宽。之后的每个模块在第一个残差块里将上一个模块的通道数翻倍，并将高和宽减半。
 
-## 小结
+### 小结
 
 * 残差块通过跨层的数据通道从而能够训练出有效的深度神经网络。
 * ResNet深刻影响了后来的深度神经网络的设计。
@@ -121,7 +121,26 @@ GoogLeNet在后面接了4个由Inception块组成的模块。ResNet则使用4个
 -----------
 >  [原书传送门](https://zh.d2l.ai/chapter_convolutional-neural-networks/googlenet.html)
 
+## 2.3 稠密连接网络（DenseNet）
+ResNet中的跨层连接设计引申出了数个后续工作。这里我们介绍其中的一个：稠密连接网络（DenseNet）。 它与ResNet的主要区别如图2.2所示。
 
+<div align=center>
+<img width="400" src="image/task06/5.12_densenet.svg"/>
+</div>
+<div align=center>图2.2 ResNet（左）与DenseNet（右）在跨层连接上的主要区别：使用相加和使用连结</div>
+
+图2.2中将部分前后相邻的运算抽象为模块$A$和模块$B$。与ResNet的主要区别在于，DenseNet里模块$B$的输出不是像ResNet那样和模块$A$的输出相加，而是在通道维上连结。这样模块$A$的输出可以直接传入模块$B$后面的层。在这个设计里，模块$A$直接跟模块$B$后面的所有层连接在了一起。这也是它被称为“稠密连接”的原因。
+
+DenseNet的主要构建模块是稠密块（dense block）和过渡层（transition layer）。前者定义了输入和输出是如何连结的，后者则用来控制通道数，使之不过大。
+
+
+### 小结
+
+* 在跨层连接上，不同于ResNet中将输入与输出相加，DenseNet在通道维上连结输入与输出。
+* DenseNet的主要构建模块是稠密块和过渡层。
+
+-----------
+> [原书传送门](https://zh.d2l.ai/chapter_convolutional-neural-networks/densenet.html)
 
 # 3 凸优化
 
