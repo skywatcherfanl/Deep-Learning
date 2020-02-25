@@ -2,33 +2,72 @@ Task10：图像分类案例2；GAN；DCGAN
 ==================================
 
 # 1 图像分类案例2
-> Kaggle上的狗品种识别（ImageNet Dogs） 
+## 1.1 Kaggle上的狗品种识别（ImageNet Dogs） 
 > 在本节中，我们将解决Kaggle竞赛中的犬种识别挑战，比赛的网址是https://www.kaggle.com/c/dog-breed-identification 在这项比赛中，我们尝试确定120种不同的狗。该比赛中使用的数据集实际上是著名的ImageNet数据集的子集。
-``` python
-# 在本节notebook中，使用后续设置的参数在完整训练集上训练模型，大致需要40-50分钟
-# 请大家合理安排GPU时长，尽量只在训练时切换到GPU资源
-# 也可以在Kaggle上访问本节notebook：
-# https://www.kaggle.com/boyuai/boyu-d2l-dog-breed-identification-imagenet-dogs
-import torch
-import torch.nn as nn
-import torch.optim as optim
-import torchvision
-import torchvision.transforms as transforms
-import torchvision.models as models
-import os
-import shutil
-import time
-import pandas as pd
-import random
-``` 
 
+## 1.2 整理数据集
 
+我们可以从比赛网址上下载数据集，其目录结构为：
 
+```
+| Dog Breed Identification
+    | train
+    |   | 000bec180eb18c7604dcecc8fe0dba07.jpg
+    |   | 00a338a92e4e7bf543340dc849230e75.jpg
+    |   | ...
+    | test
+    |   | 00a3edd22dc7859c487a64777fc8d093.jpg
+    |   | 00a6892e5c7f92c1f465e213fd904582.jpg
+    |   | ...
+    | labels.csv
+    | sample_submission.csv
+```
 
+train和test目录下分别是训练集和测试集的图像，训练集包含10,222张图像，测试集包含10,357张图像，图像格式都是JPEG，每张图像的文件名是一个唯一的id。labels.csv包含训练集图像的标签，文件包含10,222行，每行包含两列，第一列是图像id，第二列是狗的类别。狗的类别一共有120种。
 
+我们希望对数据进行整理，方便后续的读取，我们的主要目标是：
 
+* 从训练集中划分出验证数据集，用于调整超参数。划分之后，数据集应该包含4个部分：划分后的训练集、划分后的验证集、完整训练集、完整测试集
+* 对于4个部分，建立4个文件夹：train, valid, train_valid, test。在上述文件夹中，对每个类别都建立一个文件夹，在其中存放属于该类别的图像。前三个部分的标签已知，所以各有120个子文件夹，而测试集的标签未知，所以仅建立一个名为unknown的子文件夹，存放所有测试数据。
 
+我们希望整理后的数据集目录结构为：
+```
+| train_valid_test
+    | train
+    |   | affenpinscher
+    |   |   | 00ca18751837cd6a22813f8e221f7819.jpg
+    |   |   | ...
+    |   | afghan_hound
+    |   |   | 0a4f1e17d720cdff35814651402b7cf4.jpg
+    |   |   | ...
+    |   | ...
+    | valid
+    |   | affenpinscher
+    |   |   | 56af8255b46eb1fa5722f37729525405.jpg
+    |   |   | ...
+    |   | afghan_hound
+    |   |   | 0df400016a7e7ab4abff824bf2743f02.jpg
+    |   |   | ...
+    |   | ...
+    | train_valid
+    |   | affenpinscher
+    |   |   | 00ca18751837cd6a22813f8e221f7819.jpg
+    |   |   | ...
+    |   | afghan_hound
+    |   |   | 0a4f1e17d720cdff35814651402b7cf4.jpg
+    |   |   | ...
+    |   | ...
+    | test
+    |   | unknown
+    |   |   | 00a3edd22dc7859c487a64777fc8d093.jpg
+    |   |   | ...
+```
 
+## 1.3 定义模型
+
+这个比赛的数据属于ImageNet数据集的子集，我们使用微调的方法，选用在ImageNet完整数据集上预训练的模型来抽取图像特征，以作为自定义小规模输出网络的输入。
+
+此处我们使用与训练的ResNet-34模型，直接复用预训练模型在输出层的输入，即抽取的特征，然后我们重新定义输出层，本次我们仅对重定义的输出层的参数进行训练，而对于用于抽取特征的部分，我们保留预训练模型的参数。
 
 
 
