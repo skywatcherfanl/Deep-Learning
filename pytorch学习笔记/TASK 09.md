@@ -452,4 +452,4 @@ if __name__ == "__main__":
                         % (epoch + 1, num_iters, sum_loss / (i + 1), 100. * correct / total))
 
     print("Training Finished, TotalEPOCH=%d" % EPOCH)
-    ``` 
+``` 
