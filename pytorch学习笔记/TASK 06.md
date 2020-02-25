@@ -148,14 +148,21 @@ DenseNet的主要构建模块是稠密块（dense block）和过渡层（transit
 - 优化方法目标：训练集损失函数值   
 - 深度学习目标：测试集损失函数值（泛化性）
 
+<div align=center>
+<img width="400" src="image/task06/3.1.PNG"/>
+</div>
+<div align=center>  </div>
+
+
 ## 3.1 优化在深度学习中的挑战
 ### 3.1.1 局部最小值
 
 $$
 f(x) = x\cos \pi x
 $$
+
 <div align=center>
-<img width="400" src="image/task06/3.1.PNG"/>
+<img width="400" src="image/task06/3.2.PNG"/>
 </div>
 <div align=center>  </div>
 
@@ -163,13 +170,24 @@ $$
 ### 3.1.2 鞍点
 ### 鞍点的定义 
 一个不是局部最小值的驻点（一阶导数为0的点）称为鞍点。数学含义是： 目标函数在此点上的梯度（一阶导数）值为 0， 但从改点出发的一个方向是函数的极大值点，而在另一个方向是函数的极小值点。
-
+<div align=center>
+<img width="400" src="image/task06/3.3.PNG"/>
+</div>
+<div align=center>  </div>
 
 ### 3.1.3 梯度消失
 
+<div align=center>
+<img width="400" src="image/task06/3.4.PNG"/>
+</div>
+<div align=center>  </div>
+
 ## 3.2 凸性（Convexity）
 
-
+<div align=center>
+<img width="400" src="image/task06/3.5.PNG"/>
+</div>
+<div align=center>  </div>
 
 ## 3.3 凸函数与二阶导数
 $f^{''}(x) \ge 0 \Longleftrightarrow f(x)$ 是凸函数
