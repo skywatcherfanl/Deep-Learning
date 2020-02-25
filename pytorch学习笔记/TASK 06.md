@@ -28,15 +28,15 @@ $$
 
 
 $$
-\boldsymbol{\mu}_\mathcal{B} \leftarrow \frac{1}{m}\sum_{i = 1}^{m} \boldsymbol{x}^{(i)},
+\boldsymbol{\mu}_ \mathcal{B} \leftarrow \frac{1}{m}\sum_ {i = 1}^{m} \boldsymbol{x}^{(i)},
 $$ 
 $$
-\boldsymbol{\sigma}_\mathcal{B}^2 \leftarrow \frac{1}{m} \sum_{i=1}^{m}(\boldsymbol{x}^{(i)} - \boldsymbol{\mu}_\mathcal{B})^2,
+\boldsymbol{\sigma}_ \mathcal{B}^2 \leftarrow \frac{1}{m} \sum_ {i=1}^{m}(\boldsymbol{x}^{(i)} - \boldsymbol{\mu}_ \mathcal{B})^2,
 $$
 
 
 $$
-\hat{\boldsymbol{x}}^{(i)} \leftarrow \frac{\boldsymbol{x}^{(i)} - \boldsymbol{\mu}_\mathcal{B}}{\sqrt{\boldsymbol{\sigma}_\mathcal{B}^2 + \epsilon}},
+\hat{\boldsymbol{x}}^{(i)} \leftarrow \frac{\boldsymbol{x}^{(i)} - \boldsymbol{\mu}_ \mathcal{B}}{\sqrt{\boldsymbol{\sigma}_ \mathcal{B}^2 + \epsilon}},
 $$
 
 这⾥ϵ > 0是个很小的常数，保证分母大于0
@@ -48,7 +48,7 @@ $$
 $$
 
 
-引入可学习参数：拉伸参数γ和偏移参数β。若$\boldsymbol{\gamma} = \sqrt{\boldsymbol{\sigma}_\mathcal{B}^2 + \epsilon}$和$\boldsymbol{\beta} = \boldsymbol{\mu}_\mathcal{B}$，批量归一化无效。
+引入可学习参数：拉伸参数γ和偏移参数β。若$\boldsymbol{\gamma} = \sqrt{\boldsymbol{\sigma}_ \mathcal{B}^2 + \epsilon}$和$\boldsymbol{\beta} = \boldsymbol{\mu}_ \mathcal{B}$，批量归一化无效。
 
 ### 2.对卷积层做批量归⼀化
 位置：卷积计算之后、应⽤激活函数之前。  
