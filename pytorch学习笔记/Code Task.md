@@ -139,7 +139,9 @@ def load_data_fashion_mnist(batch_size, root='../../dataset', use_normalize=Fals
     if use_normalize:
         normalize = transforms.Normalize(mean=[mean], std=[std])
         train_augs = transforms.Compose([transforms.RandomCrop(28, padding=2),
-                    transforms.RandomHorizontalFlip(),
+                    transforms.RandomHorizontalFlip(), # 数据增强
+                    # transforms.RandomVerticalFlip
+                    # transforms.ColorJitter(brightness=0, contrast=0, saturation=0, hue=0)
                     transforms.ToTensor(), 
                     normalize])
         test_augs = transforms.Compose([transforms.ToTensor(), normalize])
@@ -241,7 +243,7 @@ def train_model(net, train_iter, test_iter, batch_size, optimizer, device, num_e
 
 
 print('训练...')
-num_epochs = 50
+num_epochs = 70
 lr = 0.01
 lr_period = 40
 lr_decay = 0.1
@@ -273,6 +275,7 @@ with open('submission.csv', 'w') as f:
         f.write('{},{}\n'.format(id, pred))
 ```
 
+代码参照了助教提供的baseline，主要是修改了数据增强、Epoch、学习率和优化器，最终成绩为0.94450。。第一次用pytorch，也是第一次玩深度学习和CV，学习到很多，也有很多不足，后面继续加油！
 
 ## 参考资源
 
