@@ -133,7 +133,7 @@ for name, layer in net.named_children():
 
 
 # 定义加载数据集的函数
-def load_data_fashion_mnist(batch_size, root='../../dataset', use_normalize=False, mean=None, std=None):
+def load_data_fashion_mnist(batch_size, root='/home/kesci/work/dataset', use_normalize=False, mean=None, std=None):
     """Download the fashion mnist dataset and then load into memory."""
 
     if use_normalize:
@@ -164,7 +164,7 @@ def load_data_fashion_mnist(batch_size, root='../../dataset', use_normalize=Fals
 
 print('计算数据集均值标准差')
 batch_size = 64  
-train_iter, test_iter = load_data_fashion_mnist(batch_size, root='../../dataset', use_normalize=False)
+train_iter, test_iter = load_data_fashion_mnist(batch_size, root='/home/kesci/work/dataset', use_normalize=False)
 # 求整个数据集的均值
 temp_sum = 0
 cnt = 0
@@ -192,7 +192,7 @@ print('整个数据集的像素标准差:{}'.format(dataset_global_std))
 
 # 重新获取应用了归一化的数据集迭代器
 batch_size = 64  
-train_iter, test_iter = load_data_fashion_mnist(batch_size, root='../../dataset', use_normalize=True,
+train_iter, test_iter = load_data_fashion_mnist(batch_size, root='/home/kesci/work/dataset', use_normalize=True,
                         mean = dataset_global_mean, std = dataset_global_std)
 
 
